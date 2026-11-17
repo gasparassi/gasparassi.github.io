@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eder Gasparassi · Desenvolvedor Back-end</title>
+<meta name="description" content="Eder Gasparassi — Desenvolvedor Back-end especializado em PHP, Laravel e arquitetura de software.">
+<meta property="og:title" content="Eder Gasparassi · Desenvolvedor Back-end">
+<meta property="og:description" content="PHP · Laravel · Arquitetura de Software · SaaS multi-tenant · APIs RESTful">
+<meta property="og:image" content="https://github.com/gasparassi.png">
+<link rel="icon" href="https://github.com/gasparassi.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfbfa;
+    --surface: #ffffff;
+    --text: #1c1f24;
+    --muted: #5b6270;
+    --line: #e5e6e9;
+    --accent: #1e3a5f;
+    --accent-soft: #eef2f7;
+    --tag-bg: #f1f2f4;
+    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 4px 16px rgba(16,24,40,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115;
+      --surface: #161920;
+      --text: #e6e8eb;
+      --muted: #9aa1ad;
+      --line: #262a33;
+      --accent: #8fb3e0;
+      --accent-soft: #1a2230;
+      --tag-bg: #1f232b;
+      --shadow: none;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; line-height: 1.2; margin: 0; }
+
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+
+  /* Navegação */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  nav .brand { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: 18px; color: var(--text); }
+  nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
+  nav ul a { color: var(--muted); font-size: 14px; font-weight: 500; }
+  nav ul a:hover { color: var(--text); text-decoration: none; }
+
+  /* Cabeçalho */
+  header.hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+  .hero .wrap { display: grid; grid-template-columns: 180px 1fr; gap: 48px; align-items: center; }
+  .hero img.avatar { width: 180px; height: 180px; border-radius: 50%; border: 1px solid var(--line); object-fit: cover; }
+  .hero .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 600; color: var(--muted); margin: 0 0 10px; }
+  .hero h1 { font-size: clamp(36px, 5vw, 52px); letter-spacing: -.01em; }
+  .hero .role { font-size: 19px; color: var(--muted); margin: 10px 0 22px; }
+  .hero p.lead { max-width: 760px; margin: 0 0 26px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 500;
+    border: 1px solid var(--line); background: var(--surface); color: var(--text);
+  }
+  .btn:hover { text-decoration: none; border-color: var(--muted); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* Seções */
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  .section-head { display: grid; grid-template-columns: 240px 1fr; gap: 48px; }
+  .section-head h2 { font-size: 28px; }
+  .section-head .kicker { display: block; font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .prose p { margin: 0 0 16px; max-width: 820px; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* Competências */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 24px; box-shadow: var(--shadow);
+  }
+  .card h3 { font-size: 19px; margin-bottom: 14px; }
+  .card ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+  .card li { margin-bottom: 8px; }
+  .card li strong { color: var(--text); font-weight: 600; }
+
+  /* Tecnologias */
+  .stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .stack .card h3 { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .stack img.icons { height: 48px; max-width: 100%; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+
+  /* Projetos */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .project { display: flex; flex-direction: column; }
+  .project h3 { font-size: 21px; margin-bottom: 4px; }
+  .project .sub { font-size: 13px; color: var(--muted); font-weight: 500; margin-bottom: 12px; }
+  .project p { margin: 0 0 18px; color: var(--muted); font-size: 15px; flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--tag-bg); color: var(--text); }
+
+  /* Estatísticas */
+  .stats { display: flex; flex-wrap: wrap; gap: 20px; }
+  .stats img { height: 170px; max-width: 100%; }
+
+  /* Contato */
+  .contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .contact .card { display: block; color: var(--text); }
+  .contact .card:hover { text-decoration: none; border-color: var(--muted); }
+  .contact .label { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .contact .value { display: block; margin-top: 6px; font-weight: 500; word-break: break-word; }
+
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  /* Responsivo */
+  @media (max-width: 960px) {
+    .section-head { grid-template-columns: 1fr; gap: 24px; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 720px) {
+    .wrap { padding: 0 16px; }
+    nav ul { display: none; }
+    header.hero { padding: 48px 0 40px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 24px; }
+    .hero img.avatar { width: 120px; height: 120px; }
+    section { padding: 48px 0; }
+    .grid-3, .grid-2, .stack, .contact { grid-template-columns: 1fr; }
+    .stack img.icons { height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">Eder Gasparassi</a>
+    <ul>
+      <li><a href="#perfil">Perfil</a></li>
+      <li><a href="#competencias">Competências</a></li>
+      <li><a href="#tecnologias">Tecnologias</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="avatar" src="https://github.com/gasparassi.png" alt="Foto de Eder Gasparassi">
+    <div>
+      <p class="eyebrow">Portfólio profissional</p>
+      <h1>Eder Gasparassi</h1>
+      <p class="role">Desenvolvedor Back-end · PHP &amp; Laravel · Arquitetura de Software</p>
+      <p class="lead">Construo aplicações robustas, seguras e escaláveis, com foco em plataformas SaaS multi-tenant, APIs RESTful, microsserviços e sistemas em tempo real.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:gasparassi@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2 .9V18h16V6.4l-7.4 5.6a1 1 0 0 1-1.2 0L4 6.4ZM18.3 6H5.7L12 10.8 18.3 6Z"/></svg>
+          Entrar em contato
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/elias-eder-gasparassi" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="https://github.com/gasparassi" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="perfil">
+  <div class="wrap section-head">
+    <h2><span class="kicker">01</span>Perfil profissional</h2>
+    <div class="prose">
+      <p>Desenvolvedor de software especializado em <strong>back-end com PHP e Laravel</strong>, com atuação em todo o ciclo de desenvolvimento: levantamento de requisitos, modelagem de dados, arquitetura, implementação, testes e implantação.</p>
+      <p>Meu trabalho é orientado por <strong>código limpo, princípios SOLID e segurança</strong>, com experiência na construção de <strong>plataformas SaaS multi-tenant</strong>, APIs RESTful, microsserviços, sistemas em tempo real e painéis administrativos. Complemento a atuação no back-end com conhecimentos em front-end moderno, conteinerização e automação de entregas.</p>
+    </div>
+  </div>
+</section>
+
+<section id="competencias">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px">
+      <h2><span class="kicker">02</span>Competências técnicas</h2>
+      <div class="prose"><p>Áreas em que concentro minha atuação, da arquitetura à entrega em produção.</p></div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Arquitetura e back-end</h3>
+        <ul>
+          <li><strong>APIs RESTful</strong> e <strong>microsserviços</strong> desacoplados</li>
+          <li><strong>Multi-tenancy</strong> com banco e cache isolados por cliente</li>
+          <li>Autenticação com <strong>Sanctum</strong>, <strong>PASETO</strong> e policies</li>
+          <li>Filas e jobs assíncronos com <strong>Horizon</strong></li>
+          <li>Tempo real com <strong>WebSockets</strong> (Laravel Reverb)</li>
+          <li>Webhooks, pagamentos e <strong>NFS-e Nacional</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Qualidade de software</h3>
+        <ul>
+          <li>Design Patterns, <strong>Repository</strong> e <strong>Service Layer</strong></li>
+          <li>Injeção de dependências e princípios <strong>SOLID</strong></li>
+          <li>Testes automatizados com <strong>PHPUnit</strong> e <strong>Pest</strong></li>
+          <li>Análise estática com <strong>PHPStan</strong></li>
+          <li>Padronização com <strong>Laravel Pint</strong> (PSR-12)</li>
+          <li>Code review com foco em segurança e performance</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Dados e infraestrutura</h3>
+        <ul>
+          <li>Modelagem relacional e otimização de consultas</li>
+          <li><strong>MySQL</strong>, <strong>PostgreSQL</strong> e <strong>SQLite</strong></li>
+          <li>Cache e sessões distribuídas com <strong>Redis</strong></li>
+          <li>Ambientes com <strong>Docker</strong> e <strong>Docker Compose</strong></li>
+          <li>Servidores web com <strong>Nginx</strong></li>
+          <li>CI/CD com <strong>GitHub Actions</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tecnologias">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px">
+      <h2><span class="kicker">03</span>Tecnologias</h2>
+      <div class="prose"><p>Ferramentas que utilizo no dia a dia para projetar, construir e operar aplicações.</p></div>
+    </div>
+    <div class="stack">
+      <div class="card">
+        <h3>Linguagens</h3>
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=php,js,ts,python,dart,html,css&theme=dark">
+          <img class="icons" src="https://skillicons.dev/icons?i=php,js,ts,python,dart,html,css&theme=light" alt="PHP, JavaScript, TypeScript, Python, Dart, HTML, CSS">
+        </picture>
+      </div>
+      <div class="card">
+        <h3>Bancos de dados e cache</h3>
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=mysql,postgres,sqlite,redis&theme=dark">
+          <img class="icons" src="https://skillicons.dev/icons?i=mysql,postgres,sqlite,redis&theme=light" alt="MySQL, PostgreSQL, SQLite, Redis">
+        </picture>
+      </div>
+      <div class="card">
+        <h3>Frameworks e bibliotecas</h3>
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=laravel,vue,angular,react,nodejs,flutter,bootstrap,tailwind&theme=dark">
+          <img class="icons" src="https://skillicons.dev/icons?i=laravel,vue,angular,react,nodejs,flutter,bootstrap,tailwind&theme=light" alt="Laravel, Vue, Angular, React, Node.js, Flutter, Bootstrap, Tailwind">
+        </picture>
+        <div class="badges">
+          <span class="tag">Filament</span>
+          <span class="tag">Livewire</span>
+          <span class="tag">Pinia</span>
+          <span class="tag">Pest</span>
+          <span class="tag">PHPUnit</span>
+          <span class="tag">Chart.js</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>DevOps e ferramentas</h3>
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=docker,nginx,linux,git,github,githubactions,vscode&theme=dark">
+          <img class="icons" src="https://skillicons.dev/icons?i=docker,nginx,linux,git,github,githubactions,vscode&theme=light" alt="Docker, Nginx, Linux, Git, GitHub, GitHub Actions, VS Code">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px">
+      <h2><span class="kicker">04</span>Projetos em destaque</h2>
+      <div class="prose"><p>Uma seleção de trabalhos que ilustram as soluções e arquiteturas com que atuo.</p></div>
+    </div>
+    <div class="grid-2">
+      <article class="card project">
+        <h3>AuraLoc</h3>
+        <div class="sub">Gestão de imóveis · SaaS multi-tenant</div>
+        <p>Plataforma para administração de imóveis de locação por temporada e mensal. Cada cliente opera em ambiente isolado, com banco SQLite e cache Redis dedicados. Dashboard financeiro com receita, despesas, ROI e payback, além de alertas de vencimento de IPTU, condomínio e garantias.</p>
+        <div class="tags"><span class="tag">Laravel</span><span class="tag">Redis</span><span class="tag">SQLite</span><span class="tag">Bootstrap 5</span><span class="tag">Chart.js</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span></div>
+      </article>
+      <article class="card project">
+        <h3>Real-time Chat</h3>
+        <div class="sub">Mensageria em tempo real</div>
+        <p>Aplicação de mensagens instantâneas baseada em WebSockets, com broadcasting de eventos e atualização em tempo real da interface.</p>
+        <div class="tags"><span class="tag">Laravel Reverb</span><span class="tag">Laravel Echo</span><span class="tag">Vue.js</span></div>
+      </article>
+      <article class="card project">
+        <h3>Autenticação com PASETO</h3>
+        <div class="sub">Segurança de APIs</div>
+        <p>API com autenticação stateless baseada em tokens PASETO, uma alternativa ao JWT com garantias criptográficas mais rígidas.</p>
+        <div class="tags"><span class="tag">Laravel</span><span class="tag">PASETO</span><span class="tag">REST</span></div>
+      </article>
+      <article class="card project">
+        <h3>Admin Panel SPA Boilerplate</h3>
+        <div class="sub">Arquitetura front-end</div>
+        <p>Estrutura base para painéis administrativos em arquitetura SPA, com gerenciamento de estado centralizado e autenticação integrada.</p>
+        <div class="tags"><span class="tag">Laravel</span><span class="tag">Vue 3</span><span class="tag">Pinia</span><span class="tag">Vite</span></div>
+      </article>
+      <article class="card project">
+        <h3>Microsserviço de Endereços</h3>
+        <div class="sub">Microsserviços</div>
+        <p>Serviço independente e conteinerizado para consulta e gestão de endereços, projetado para ser consumido por outras aplicações.</p>
+        <div class="tags"><span class="tag">Laravel</span><span class="tag">Docker</span><span class="tag">Nginx</span><span class="tag">MySQL</span></div>
+      </article>
+      <article class="card project">
+        <h3>Painéis com Filament</h3>
+        <div class="sub">Sistemas administrativos</div>
+        <p>Painéis de gestão completos com CRUDs, filtros, relatórios e controle de permissões por perfil de usuário.</p>
+        <div class="tags"><span class="tag">Laravel</span><span class="tag">Filament</span><span class="tag">Livewire</span><span class="tag">Tailwind CSS</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="indicadores">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px">
+      <h2><span class="kicker">05</span>Indicadores no GitHub</h2>
+      <div class="prose"><p>Atividade e linguagens mais utilizadas nos meus repositórios.</p></div>
+    </div>
+    <div class="stats">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=gasparassi&show_icons=true&theme=transparent&title_color=8fb3e0&text_color=e6e8eb&icon_color=8fb3e0&hide_border=true&include_all_commits=true&count_private=true&locale=pt-br">
+        <img src="https://github-readme-stats.vercel.app/api?username=gasparassi&show_icons=true&theme=transparent&title_color=1e3a5f&text_color=1c1f24&icon_color=1e3a5f&hide_border=true&include_all_commits=true&count_private=true&locale=pt-br" alt="Estatísticas do GitHub" loading="lazy">
+      </picture>
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=gasparassi&layout=compact&theme=transparent&title_color=8fb3e0&text_color=e6e8eb&hide_border=true&langs_count=8&locale=pt-br">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=gasparassi&layout=compact&theme=transparent&title_color=1e3a5f&text_color=1c1f24&hide_border=true&langs_count=8&locale=pt-br" alt="Linguagens mais usadas" loading="lazy">
+      </picture>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px">
+      <h2><span class="kicker">06</span>Contato</h2>
+      <div class="prose"><p>Disponível para oportunidades profissionais, consultorias e projetos colaborativos.</p></div>
+    </div>
+    <div class="contact">
+      <a class="card" href="mailto:gasparassi@gmail.com">
+        <span class="label">E-mail</span>
+        <span class="value">gasparassi@gmail.com</span>
+      </a>
+      <a class="card" href="https://www.linkedin.com/in/elias-eder-gasparassi" target="_blank" rel="noopener">
+        <span class="label">LinkedIn</span>
+        <span class="value">in/elias-eder-gasparassi</span>
+      </a>
+      <a class="card" href="https://github.com/gasparassi" target="_blank" rel="noopener">
+        <span class="label">GitHub</span>
+        <span class="value">github.com/gasparassi</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="y">2026</span> Eder Gasparassi</div>
+</footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
