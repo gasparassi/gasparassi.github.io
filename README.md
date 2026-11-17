@@ -7,7 +7,7 @@
 **Desenvolvedor Back-end · PHP & Laravel · Arquitetura de Software**
 
 <a href="https://github.com/gasparassi"><img src="https://img.shields.io/badge/GitHub-gasparassi-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
-<a href="https://www.linkedin.com/in/SEU-LINKEDIN"><img src="https://img.shields.io/badge/LinkedIn-Eder%20Gasparassi-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+<a href="https://www.linkedin.com/in/elias-eder-gasparassi"><img src="https://img.shields.io/badge/LinkedIn-Eder%20Gasparassi-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
 <a href="mailto:gasparassi@gmail.com"><img src="https://img.shields.io/badge/E--mail-gasparassi%40gmail.com-B91C1C?style=for-the-badge&logo=gmail&logoColor=white" alt="E-mail"></a>
 
 </div>
@@ -142,5 +142,5 @@ _ano – ano_
 Estou disponível para oportunidades profissionais, consultorias e projetos colaborativos.
 
 - **E-mail:** [gasparassi@gmail.com](mailto:gasparassi@gmail.com)
-- **LinkedIn:** [https://www.linkedin.com/in/elias-eder-gasparassi](https://www.linkedin.com/in/SEU-LINKEDIN)
+- **LinkedIn:** [Linkedim](https://www.linkedin.com/in/elias-eder-gasparassi)
 - **GitHub:** [github.com/gasparassi](https://github.com/gasparassi)
