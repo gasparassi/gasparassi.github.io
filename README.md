@@ -142,5 +142,5 @@ _ano – ano_
 Estou disponível para oportunidades profissionais, consultorias e projetos colaborativos.
 
 - **E-mail:** [gasparassi@gmail.com](mailto:gasparassi@gmail.com)
-- **LinkedIn:** [Linkedim](https://www.linkedin.com/in/elias-eder-gasparassi)
+- **LinkedIn:** [Linkedin](https://www.linkedin.com/in/elias-eder-gasparassi)
 - **GitHub:** [github.com/gasparassi](https://github.com/gasparassi)
